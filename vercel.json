@@ -4,16 +4,20 @@
   "env": {
     "VITE_API_BASE_URL": "@vite_api_base_url"
   },
-  "serverless": {
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/server/index.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/dist/index.html"
-      }
-    ]
-  }
+  "builds": [
+    {
+      "src": "server/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/index.html"
+    }
+  ]
 }
