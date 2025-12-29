@@ -1,0 +1,43 @@
+[
+  {
+    "id": "street-season",
+    "title": "Street Season",
+    "description": "Angular drum patterns, late-night cyphers, cracked-concrete soul.",
+    "cover": "street-season.svg",
+    "category": "Rap / Alt",
+    "platform": "Spotify",
+    "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DX2RxBh64BHjQ?utm_source=generator",
+    "curatorNote": "Built for subway rides after midnight. No fillers, just raw textures."
+  },
+  {
+    "id": "neon-b-sides",
+    "title": "Neon B-Sides",
+    "description": "Glassy synths, art-club bass, monochrome vocal layers.",
+    "cover": "neon-b-sides.svg",
+    "category": "Electronic",
+    "platform": "Audiomack",
+    "embedUrl": "https://audiomack.com/embed/song/audiomack/lo-fi",
+    "curatorNote": "Minimal electronics with heartbeat pacing. Every sample feels hand-cut."
+  },
+  {
+    "id": "tempo-archive",
+    "title": "Tempo Archive",
+    "description": "Drum machines meet spoken word and avant-jazz reminiscing.",
+    "cover": "tempo-archive.svg",
+    "category": "Experimental",
+    "platform": "SoundCloud",
+    "embedUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/209262931&color=%23000",
+    "curatorNote": "A study in restraint. Static, hiss, and groove arranged like gallery pieces."
+  },
+  {
+    "id": "brick-and-bloom",
+    "title": "Brick & Bloom",
+    "description": "Soulful samples, percussive house, rooftop-ready edits.",
+    "cover": "brick-and-bloom.svg",
+    "category": "Soul / House",
+    "platform": "Spotify",
+    "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWU0ScTcjJBdj?utm_source=generator",
+    "curatorNote": "Sunrise pacing. Strictly monochrome grooves for soft landings."
+  }
+]
+

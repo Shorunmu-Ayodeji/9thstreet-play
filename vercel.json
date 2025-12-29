@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "VITE_API_BASE_URL": "@vite_api_base_url"
+  },
+  "serverless": {
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/server/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/dist/index.html"
+      }
+    ]
+  }
+}

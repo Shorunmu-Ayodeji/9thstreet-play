@@ -1,0 +1,6 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#000"/>
+  <path d="M40 60h320v20H40zM40 120h320v20H40zM40 180h320v20H40zM40 240h320v20H40zM40 300h320v20H40z" fill="#FFF"/>
+  <text x="40" y="360" fill="#FFF" font-family="Space Grotesk, sans-serif" font-size="36" letter-spacing="4">STREET</text>
+</svg>
+

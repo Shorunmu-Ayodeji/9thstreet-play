@@ -1,0 +1,75 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Server data files (local submissions/contacts)
+server/data/*.json
+
+# Build and cache files
+.cache
+.parcel-cache
+.vite
+*.tsbuildinfo
+
+# Testing
+coverage
+.nyc_output
+*.test.js.snap
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Package manager lock files (uncomment if you want to ignore)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Optional: Local development overrides
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Documentation files
+README.md
+DEPLOYMENT.md
