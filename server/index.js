@@ -1,36 +1,21 @@
 import express from 'express'
 import cors from 'cors'
-import fs from 'fs/promises'
-import path from 'path'
+import { createClient } from '@supabase/supabase-js'
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
-const DATA_DIR = path.join(process.cwd(), 'server/data')
-const SUBMISSIONS_FILE = path.join(DATA_DIR, 'submissions.json')
-const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json')
-
-async function ensureDataFiles() {
-  await fs.mkdir(DATA_DIR, { recursive: true })
-  try { await fs.access(SUBMISSIONS_FILE) } 
-  catch { await fs.writeFile(SUBMISSIONS_FILE, '[]') }
-
-  try { await fs.access(CONTACTS_FILE) } 
-  catch { await fs.writeFile(CONTACTS_FILE, '[]') }
-}
-
-async function appendJson(file, obj) {
-  const raw = await fs.readFile(file, 'utf8').catch(() => '[]')
-  const arr = JSON.parse(raw || '[]')
-  arr.push(obj)
-  await fs.writeFile(file, JSON.stringify(arr, null, 2))
-}
+// Supabase config
+const SUPABASE_URL = process.env.SUPABASE_URL
+const SUPABASE_KEY = process.env.SUPABASE_KEY
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 function isEmail(val) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
 }
 
+// Submissions endpoint
 app.post('/api/submit', async (req, res) => {
   const { artist, song, email, notes } = req.body || {}
   if (!artist || !song || !email) {
@@ -40,19 +25,15 @@ app.post('/api/submit', async (req, res) => {
     return res.status(400).json({ error: 'invalid email' })
   }
 
-  try {
-    await ensureDataFiles()
-    await appendJson(SUBMISSIONS_FILE, {
-      artist, song, email, notes,
-      createdAt: new Date().toISOString()
-    })
-    res.json({ ok: true })
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'failed to save' })
-  }
+  const { data, error } = await supabase
+    .from('submissions')
+    .insert([{ artist, song, email, notes }])
+
+  if (error) return res.status(500).json({ error: error.message })
+  res.json({ ok: true, data })
 })
 
+// Contact endpoint
 app.post('/api/contact', async (req, res) => {
   const { name, email, subject, message } = req.body || {}
   if (!name || !email || !message) {
@@ -62,17 +43,12 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ error: 'invalid email' })
   }
 
-  try {
-    await ensureDataFiles()
-    await appendJson(CONTACTS_FILE, {
-      name, email, subject, message,
-      createdAt: new Date().toISOString()
-    })
-    res.json({ ok: true })
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'failed to save' })
-  }
+  const { data, error } = await supabase
+    .from('contacts')
+    .insert([{ name, email, subject, message }])
+
+  if (error) return res.status(500).json({ error: error.message })
+  res.json({ ok: true, data })
 })
 
 export default app
