@@ -82,3 +82,6 @@ Desktop.ini
 # Documentation files
 README.md
 DEPLOYMENT.md
+
+.vercel
+.env*.local
